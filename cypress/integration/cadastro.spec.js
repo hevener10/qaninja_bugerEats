@@ -26,6 +26,7 @@ describe("Cadastro", () => {
         bairro: "Itaim Bibi",
         cidade_uf: "São Paulo/SP",
       },
+      metodo_entrega: "Moto",
     };
 
     cy.get('input[name="name"]').type(entregador.nome);
@@ -51,5 +52,7 @@ describe("Cadastro", () => {
       "have.value",
       entregador.endereco.cidade_uf
     );
+
+    cy.get('[alt="Moto"]').click();
   });
 });

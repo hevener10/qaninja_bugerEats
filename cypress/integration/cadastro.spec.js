@@ -19,12 +19,12 @@ describe("Cadastro", () => {
       whatsapp: "11999999999",
 
       endereco: {
-        cep: "75860000",
-        rua: "Rua dos tapajos",
+        cep: "04534011",
+        rua: "Rua Joaquim Floriano",
         numero: "100",
         complemento: "casa",
-        bairro: "Centro",
-        cidade_uf: "Quirinópolis/GO",
+        bairro: "Itaim Bibi",
+        cidade_uf: "São Paulo/SP",
       },
     };
 
@@ -37,6 +37,19 @@ describe("Cadastro", () => {
     cy.get('input[name="address-number"]').type(entregador.endereco.numero);
     cy.get('input[name="address-details"]').type(
       entregador.endereco.complemento
+    );
+
+    cy.get('input[name="address"]').should(
+      "have.value",
+      entregador.endereco.rua
+    );
+    cy.get('input[name="district"]').should(
+      "have.value",
+      entregador.endereco.bairro
+    );
+    cy.get('input[name="city-uf"]').should(
+      "have.value",
+      entregador.endereco.cidade_uf
     );
   });
 });

@@ -1,3 +1,4 @@
+import "cypress-file-upload";
 describe("Cadastro", () => {
   it("Usuario deve se tornar um entregador", () => {
     cy.viewport(1440, 900);
@@ -27,6 +28,7 @@ describe("Cadastro", () => {
         cidade_uf: "São Paulo/SP",
       },
       metodo_entrega: "Moto",
+      cnh: "cnh-digital.jpg",
     };
 
     cy.get('input[name="name"]').type(entregador.nome);
@@ -54,5 +56,7 @@ describe("Cadastro", () => {
     );
 
     cy.get('[alt="Moto"]').click();
+
+    cy.get('input[accept^="image"]').attachFile(entregador.cnh);
   });
 });
